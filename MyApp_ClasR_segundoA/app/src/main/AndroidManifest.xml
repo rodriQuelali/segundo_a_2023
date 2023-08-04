@@ -12,6 +12,9 @@
         android:theme="@style/Theme.MyApp_ClasR_segundoA"
         tools:targetApi="31">
         <activity
+            android:name=".algoritmoTFM"
+            android:exported="false" />
+        <activity
             android:name=".palindromo"
             android:exported="false" />
         <activity
