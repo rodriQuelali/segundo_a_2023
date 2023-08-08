@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //encontrar el error o bug de esta suma:
+                //2,2 return(22)
                 tvRes.setText(String.valueOf(Integer.parseInt(num1.getText().toString()))+Integer.parseInt(num2.getText().toString()));
             }
         });
