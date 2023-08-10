@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
+        android:padding="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <EditText
+            android:id="@+id/txt1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="numero 1"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/txt2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="numero 2"
+            android:inputType="textPersonName" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="106dp"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:layout_width="202dp"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rb1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Suma" />
+
+                <RadioButton
+                    android:id="@+id/rb2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Resta" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="193dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/check1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Multiplicacion" />
+
+                <CheckBox
+                    android:id="@+id/check2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Division" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <Button
+                android:id="@+id/btn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:onClick="ejeRadio"
+                android:text="Ejecutar Radio" />
+
+            <Button
+                android:id="@+id/btn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:onClick="ejeCheck"
+                android:text="Ejecutar Check" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
