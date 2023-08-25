@@ -24,10 +24,10 @@ public class AddList extends AppCompatActivity {
         setContentView(R.layout.activity_add_list);
 
         //Editext
-        txtAdd = (EditText) findViewById(R.id.txtAdd);
+        txtAdd = (EditText) findViewById(R.id.txtAddResolt);
 
         //lista
-        listEm = (ListView) findViewById(R.id.listAdd);
+        listEm = (ListView) findViewById(R.id.listAddResolt);
         lisArrEm = new ArrayList<>();
         lisArrEm.add("Alan brito");
         adapList = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,lisArrEm);

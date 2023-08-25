@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddList">
+    tools:context=".listResolt">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="20dp"
         android:text="Listas de Empleados"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -19,8 +19,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="399dp"
-        android:layout_height="138dp"
+        android:layout_width="385dp"
+        android:layout_height="303dp"
         android:layout_marginTop="1dp"
         android:orientation="vertical"
         android:padding="15dp"
@@ -37,17 +37,39 @@
             android:hint="Empleados.."
             android:inputType="textPersonName" />
 
+        <EditText
+            android:id="@+id/txtSalary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Sueldo"
+            android:inputType="textPersonName" />
+
         <Button
             android:id="@+id/btnAddResolt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="addLista"
+            android:onClick="addEmployee"
             android:text="Agregar" />
+
+        <EditText
+            android:id="@+id/txtAddResoltSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Buscar Empleado"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Buscar" />
     </LinearLayout>
 
     <ScrollView
-        android:layout_width="377dp"
-        android:layout_height="530dp"
+        android:layout_width="376dp"
+        android:layout_height="478dp"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
