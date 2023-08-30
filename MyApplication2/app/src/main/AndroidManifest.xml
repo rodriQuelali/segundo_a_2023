@@ -12,13 +12,13 @@
         android:theme="@style/Theme.Spiner"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-<<<<<<< HEAD
+            android:name=".AddList"
             android:exported="false" />
         <activity
-            android:name=".AddList"
-=======
->>>>>>> be2e52d47ba5cb8f65c515cbe5476cda3873133e
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".listResolt"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
