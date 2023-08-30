@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class listResolt extends AppCompatActivity {
@@ -53,7 +52,21 @@ public class listResolt extends AppCompatActivity {
     }
 
     public void searchEmployee(View v){
-
+        int a=0;
+        String searchE = "";
+        System.out.println("--------->"+searchEmployee.getText().toString());
+        for (String listEmployees:listEmployee) {
+            //System.out.println(listEmployees);
+            if(listEmployees.equals(searchEmployee.getText().toString())){
+                searchE = "El empleado: "+ listEmployees + " Sueldo: "+listSalary.get(a);
+                break;
+            }else{
+                searchE = "No existe el Empleado";
+            }
+            System.out.println("--------->"+searchE);
+            a++;
+        }
+        Toast.makeText(this, searchE, Toast.LENGTH_SHORT).show();
     }
 
     public void addEmployee(View v){
