@@ -14,9 +14,10 @@ import com.example.poo.clases.Persona;
 
 import java.util.ArrayList;
 
-public class listaPersona extends RecyclerView.Adapter<listaPersona.PersonaViewsHolder> {
+public class listaPersona extends RecyclerView.Adapter<listaPersona.PersonaViewsHolder>{
 
     ArrayList<Persona> listAdpPer;
+    private OnItemClickListener onclickPerson;
 
     public listaPersona(ArrayList<Persona> listAdpPer) {
         this.listAdpPer = listAdpPer;
@@ -42,12 +43,32 @@ public class listaPersona extends RecyclerView.Adapter<listaPersona.PersonaViews
         return listAdpPer.size();
     }
 
+    public void setOnClickListener(OnItemClickListener onclickPerson){
+        this.onclickPerson = onclickPerson;
+    }
+    public interface OnItemClickListener{
+        void onItemClick(int pos, Persona persona);
+    }
+
     public class PersonaViewsHolder extends RecyclerView.ViewHolder {
 
         TextView txtLisPer;
         public PersonaViewsHolder(@NonNull View itemView) {
             super(itemView);
             txtLisPer = itemView.findViewById(R.id.txtListPersona);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(onclickPerson != null){
+                        int post =getAdapterPosition();
+                        if(post != RecyclerView.NO_POSITION){
+                            Persona perSele = listAdpPer.get(post);
+                            onclickPerson.onItemClick(post, perSele);
+                        }
+                    }
+                }
+            });
         }
     }
 }
