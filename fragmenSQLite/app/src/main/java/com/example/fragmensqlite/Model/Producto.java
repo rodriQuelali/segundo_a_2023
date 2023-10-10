@@ -1,7 +1,7 @@
-package com.example.fragmensqlite.Clases;
+package com.example.fragmensqlite.Model;
 
 public class Producto {
-    private int cod;
+    private int codigo;
     private int descripcion;
     private double precio;
 
@@ -9,11 +9,11 @@ public class Producto {
 
 
     public int getCod() {
-        return cod;
+        return codigo;
     }
 
     public void setCod(int cod) {
-        this.cod = cod;
+        this.codigo = codigo;
     }
 
     public int getDescripcion() {
