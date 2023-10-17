@@ -1,6 +1,7 @@
 package com.example.fragmensqlite.IU_producto;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
@@ -79,6 +80,8 @@ public class FragmentRegistroProducto extends Fragment {
 
         Button botonGuardar = view.findViewById(R.id.btnGuardar);
         Button botonEliminar = view.findViewById(R.id.btnEliminar);
+        Button botonEditar = view.findViewById(R.id.btnEditar);
+        Button botonBuscar = view.findViewById(R.id.btnBucar);
         txtCod = view.findViewById(R.id.txtCodigoProducto);
         txtDes = view.findViewById(R.id.txtDescriProducto);
         txtPre=view.findViewById(R.id.txtPrecioProducto);
@@ -128,6 +131,41 @@ public class FragmentRegistroProducto extends Fragment {
 
             }
         });
+
+        //editar datos
+        botonEditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        //buscar
+        botonBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SQLiteDatabase db = admin.getWritableDatabase();
+                String sqlConsul = "SELECT * FROM articulo WHERE codigo=";
+                Producto eli = new Producto(Integer.parseInt(txtCod.getText().toString()));
+                String cod = String.valueOf(eli.getCod());
+                Cursor fila = db.rawQuery(sqlConsul + cod, null);
+                if(fila.moveToFirst()){
+                    //objeto para calcular IVA
+                    Producto bus = new Producto(Integer.parseInt(fila.getString(0)),fila.getString(1),Double.parseDouble(fila.getString(2)));
+
+                    Toast.makeText(getContext(), "IVA: " + String.valueOf(bus.calIVA()), Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(getContext(), "Total: " + String.valueOf(bus.calTotal(bus)), Toast.LENGTH_SHORT).show();
+                    txtCod.setText(String.valueOf(bus.getCod()));
+                    txtDes.setText(bus.getDescripcion());
+                    txtPre.setText(String.valueOf(bus.getPrecio()));
+                }else{
+                    Toast.makeText(getContext(), "Datos No encontrados", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
         return view;
     }
 
