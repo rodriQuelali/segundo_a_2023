@@ -16,7 +16,13 @@ public class Producto {
     }
 //los metodos de producto
 
+    public Double calIVA(){
+        return this.precio * 0.16;
+    }
 
+    public Double calTotal(Producto c){
+        return c.calIVA() + this.precio +(this.precio*0.05);
+    }
     public int getCod() {
         return codigo;
     }
