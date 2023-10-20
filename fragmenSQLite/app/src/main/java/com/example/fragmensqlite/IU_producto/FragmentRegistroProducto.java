@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.fragmensqlite.DB.AdminSQLiteOpenHelper;
+import com.example.fragmensqlite.DB.DBProducto;
 import com.example.fragmensqlite.Model.Producto;
 import com.example.fragmensqlite.R;
 
@@ -89,11 +90,20 @@ public class FragmentRegistroProducto extends Fragment {
         botonGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SQLiteDatabase bd = admin.getWritableDatabase();
+                //SQLiteDatabase bd = admin.getWritableDatabase();
                 //intancia del objeto
+                DBProducto regis = new DBProducto(getContext());
+
                 registroAll = new Producto(Integer.parseInt(txtCod.getText().toString()),txtDes.getText().toString(),Double.parseDouble(txtPre.getText().toString()));
 
-                String cod = String.valueOf(registroAll.getCod());
+                int stack = regis.insertPro(registroAll);
+                if(stack == 1){
+                    Toast.makeText(getContext(), "Registro exitoso", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(), "NO se REGISTRO.....", Toast.LENGTH_SHORT).show();
+                }
+
+                /*String cod = String.valueOf(registroAll.getCod());
                 String descri = registroAll.getDescripcion();
                 String precio = String.valueOf(registroAll.getPrecio());
                 ContentValues registro = new ContentValues();
@@ -101,12 +111,10 @@ public class FragmentRegistroProducto extends Fragment {
                 registro.put("descripcion", descri);
                 registro.put("precio", precio);
                 bd.insert("articulo", null, registro);
-                bd.close();
-                Toast.makeText(getContext(), "REGISTRO EXITOSO....", Toast.LENGTH_SHORT).show();
+                bd.close();*/
                 txtCod.setText("");
                 txtDes.setText("");
                 txtPre.setText("");
-
                 System.out.println("registro db..........---------------------------");
             }
         });
