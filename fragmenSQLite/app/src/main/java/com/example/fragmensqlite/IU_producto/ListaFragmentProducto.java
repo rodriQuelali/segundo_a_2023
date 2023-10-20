@@ -3,12 +3,16 @@ package com.example.fragmensqlite.IU_producto;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.fragmensqlite.DB.DBProducto;
 import com.example.fragmensqlite.R;
+import com.example.fragmensqlite.adapter.adapterProducto;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,10 +61,20 @@ public class ListaFragmentProducto extends Fragment {
         }
     }
 
+    RecyclerView proRecy;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lista_producto, container, false);
+        View view = inflater.inflate(R.layout.fragment_lista_producto, container, false);
+        proRecy = view.findViewById(R.id.listaRecyclerview);
+        proRecy.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        DBProducto dbProducto = new DBProducto(getContext());
+        adapterProducto adapPro = new adapterProducto(dbProducto.listaProducto());
+        proRecy.setAdapter(adapPro);
+
+
+        return view;
     }
 }
