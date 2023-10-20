@@ -2,12 +2,27 @@ package com.example.fragmensqlite.Model;
 
 public class Producto {
     private int codigo;
-    private int descripcion;
+    private String descripcion;
     private double precio;
 
-    //los metodos de producto
+    public Producto(int codigo, String descripcion, double precio) {
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.precio = precio;
+    }
 
+    public Producto(int codigo) {
+        this.codigo = codigo;
+    }
+//los metodos de producto
 
+    public Double calIVA(){
+        return this.precio * 0.16;
+    }
+
+    public Double calTotal(Producto c){
+        return c.calIVA() + this.precio +(this.precio*0.05);
+    }
     public int getCod() {
         return codigo;
     }
@@ -16,11 +31,11 @@ public class Producto {
         this.codigo = codigo;
     }
 
-    public int getDescripcion() {
+    public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(int descripcion) {
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
