@@ -20,6 +20,7 @@ public class DBProducto {
     //Inser
     public int insertPro(Producto i){
         try {
+
             SQLiteDatabase bd = this.adminSQLiteOpenHelper.getWritableDatabase();
             String cod = String.valueOf(i.getCod());
             String descri = i.getDescripcion();
@@ -37,6 +38,26 @@ public class DBProducto {
 
     }
 
+
+    public int updatePro(Producto i){
+        try {
+
+            SQLiteDatabase bd = this.adminSQLiteOpenHelper.getWritableDatabase();
+            String cod = String.valueOf(i.getCod());
+            String descri = i.getDescripcion();
+            String precio = String.valueOf(i.getPrecio());
+            ContentValues registro = new ContentValues();
+            registro.put("descripcion", descri);
+            registro.put("precio", precio);
+            int cant = bd.update("articulo",registro, "codigo="+cod, null);
+            int ret = cant ==1 ? 1:0;
+            bd.close();
+            return ret;
+        }catch (Exception e){
+            return 0;
+        }
+
+    }
     public List<Producto> listaProducto(){
         List<Producto> productList = new ArrayList<>();
         SQLiteDatabase bd = this.adminSQLiteOpenHelper.getWritableDatabase();
