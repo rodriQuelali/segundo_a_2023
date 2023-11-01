@@ -66,7 +66,7 @@ public class FragmentRegistroProducto extends Fragment {
         }
     }
     private EditText txtCod, txtDes, txtPre;
-
+    private Button botonGuardar, botonEliminar, botonEditar, botonBuscar;
     private AdminSQLiteOpenHelper admin;
     private Producto registroAll;
     @Override
@@ -76,16 +76,22 @@ public class FragmentRegistroProducto extends Fragment {
         View view = inflater.inflate(R.layout.fragment_registro_producto, container, false);
         //instanacia del AdminSQliteHelper
         admin = new AdminSQLiteOpenHelper(getContext(), "administracion", null, 1);
+        cargarR(view);
+        estadoButton();
+        return view;
+    }
 
-
-
-        Button botonGuardar = view.findViewById(R.id.btnGuardar);
-        Button botonEliminar = view.findViewById(R.id.btnEliminar);
-        Button botonEditar = view.findViewById(R.id.btnEditar);
-        Button botonBuscar = view.findViewById(R.id.btnBucar);
+    private void cargarR(View view){
+        botonGuardar = view.findViewById(R.id.btnGuardar);
+        botonEliminar = view.findViewById(R.id.btnEliminar);
+        botonEditar = view.findViewById(R.id.btnEditar);
+        botonBuscar = view.findViewById(R.id.btnBucar);
         txtCod = view.findViewById(R.id.txtCodigoProducto);
         txtDes = view.findViewById(R.id.txtDescriProducto);
         txtPre=view.findViewById(R.id.txtPrecioProducto);
+    }
+
+    private void estadoButton(){
 
         botonGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,15 +109,6 @@ public class FragmentRegistroProducto extends Fragment {
                     Toast.makeText(getContext(), "NO se REGISTRO.....", Toast.LENGTH_SHORT).show();
                 }
 
-                /*String cod = String.valueOf(registroAll.getCod());
-                String descri = registroAll.getDescripcion();
-                String precio = String.valueOf(registroAll.getPrecio());
-                ContentValues registro = new ContentValues();
-                registro.put("codigo", cod);
-                registro.put("descripcion", descri);
-                registro.put("precio", precio);
-                bd.insert("articulo", null, registro);
-                bd.close();*/
                 txtCod.setText("");
                 txtDes.setText("");
                 txtPre.setText("");
@@ -144,7 +141,16 @@ public class FragmentRegistroProducto extends Fragment {
         botonEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DBProducto regis = new DBProducto(getContext());
 
+                registroAll = new Producto(Integer.parseInt(txtCod.getText().toString()),txtDes.getText().toString(),Double.parseDouble(txtPre.getText().toString()));
+
+                int stack = regis.updatePro(registroAll);
+                if(stack == 1){
+                    Toast.makeText(getContext(), "Registro exitoso", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(), "NO se REGISTRO.....", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -173,24 +179,6 @@ public class FragmentRegistroProducto extends Fragment {
             }
         });
 
-
-        return view;
     }
 
-    //funcion para guardar articulos
-    public void guadar(View view){
-
-        /*SQLiteDatabase bd = admin.getWritableDatabase();
-        String cod = txtCod.getText().toString();
-        String descri = "22";
-        String precio = "22";
-        ContentValues registro = new ContentValues();
-        registro.put("codigo", cod);
-        registro.put("descripcion", descri);
-        registro.put("precio", precio);
-        bd.insert("articulo", null, registro);
-        bd.close();*/
-        System.out.println("registro..........---------------------------");
-        //Toast.makeText(getContext(), "REGISTRO EXITOSO....", Toast.LENGTH_SHORT).show();
-    }
 }

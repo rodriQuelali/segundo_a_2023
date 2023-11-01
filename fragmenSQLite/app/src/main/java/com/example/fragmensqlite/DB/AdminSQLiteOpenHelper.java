@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
+final public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     final static private String tabla = "articulo";
     //final static private String tablaVenta = "venta";
