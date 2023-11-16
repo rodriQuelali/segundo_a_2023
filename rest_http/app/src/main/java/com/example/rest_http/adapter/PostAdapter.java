@@ -29,6 +29,7 @@ public class PostAdapter extends ArrayAdapter<jsonplace> {
 
         TextView titleTextView = view.findViewById(R.id.titleTextView);
         TextView bodyTextView = view.findViewById(R.id.bodyTextView);
+        TextView userIdTextView = view.findViewById(R.id.userIdTextView);
 
 
         jsonplace jso = jsonplaces.get(position);
@@ -36,7 +37,7 @@ public class PostAdapter extends ArrayAdapter<jsonplace> {
 
         titleTextView.setText(jso.getTitle());
         bodyTextView.setText(jso.getBody());
-
+        userIdTextView.setText(String.valueOf(jso.getUserId()));
         return view;
     }
 }

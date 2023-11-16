@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.example.rest_http.adapter.PostAdapter;
 import com.example.rest_http.configHttp.apiJsonplace;
 import com.example.rest_http.configHttp.interfaceJsonplace;
+import com.example.rest_http.model.Carrera;
 import com.example.rest_http.model.jsonplace;
 
 import java.util.ArrayList;
@@ -34,6 +35,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void http(){
+        /*Call<List<Carrera>> calldos = apiJsonplace.getCarr().create(interfaceJsonplace.class).getCarrera();
+
+        calldos.enqueue(new Callback<List<Carrera>>() {
+            @Override
+            public void onResponse(Call<List<Carrera>> call, Response<List<Carrera>> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Carrera>> call, Throwable t) {
+
+            }
+        });*/
+
+
+
+
+
         Call<List<jsonplace>> call = apiJsonplace.getJsonplace().create(interfaceJsonplace.class).getJsonplaces();
         System.out.println("-----------------------------------------jjjjjj");
         call.enqueue(new Callback<List<jsonplace>>() {
@@ -46,9 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     PostAdapter adapter = new PostAdapter(MainActivity.this, listJsoplace);
 
                     listView.setAdapter(adapter);
-                    //for (jsonplace elemento : listJsoplace) {
-                        //System.out.println("--------"+ elemento);
-                    //}
+
                     System.out.println("--------jjjjj----"+response.body());
                     Toast.makeText(MainActivity.this, listJsoplace.toString(), Toast.LENGTH_SHORT).show();
                 }
